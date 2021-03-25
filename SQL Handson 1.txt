@@ -1,0 +1,205 @@
+1.mysql> create database sample;
+Query OK, 1 row affected (0.24 sec)
+
+mysql> use sample;
+Database changed
+mysql> CREATE TABLE PROGRAMMER
+    -> (EmpNo numeric(5),
+    -> ProjId varchar(5),
+    -> LastName varchar(30),
+    -> FirstName varchar(15),
+    -> HireDate Date,
+    -> Language varchar(15),
+    -> TaskNo numeric(2),
+    -> Previlege varchar(25)
+    -> );
+Query OK, 0 rows affected (2.58 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| handson            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sample             |
+| sys                |
++--------------------+
+6 rows in set (0.09 sec)
+
+mysql> SHOW TABLES;
++------------------+
+| Tables_in_sample |
++------------------+
+| programmer       |
++------------------+
+1 row in set (0.28 sec)
+
+mysql> DESCRIBE PROGRAMMER;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| EmpNo      | decimal(5,0) | YES  |     | NULL    |       |
+| ProjId     | varchar(5)   | YES  |     | NULL    |       |
+| LastName   | varchar(30)  | YES  |     | NULL    |       |
+| FirstName  | varchar(15)  | YES  |     | NULL    |       |
+| HireDate   | date         | YES  |     | NULL    |       |
+| Language   | varchar(15)  | YES  |     | NULL    |       |
+| TaskNo     | decimal(2,0) | YES  |     | NULL    |       |
+| Previlege  | varchar(25)  | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+8 rows in set (0.14 sec)
+2.mysql> INSERT INTO PROGRAMMER(EmpNo,LastName,FirstName,HireDate,ProjId,Language,TaskNo,Privilidge)VALUES
+    -> (201,"Gupta","Saurav",1/1/95,"NPR","VB",52,"Secret"),    
+    -> (390,"Ghosh",,"pinky",1/05/93,"KCW","JAVA",11,"Top Secret"),
+    -> (789,"Agarwal","Praveen",08/31/98,"RNC","VB",11,"Secret"),
+    -> (134,"Chaudary","Supriyo",07/15/95,"TIPPS","C++",52,"Secret"),
+    -> (896,"Jha","Ranjit",06/15/97,"KWC","JAVA",10,"Top Secret"),
+    -> (345,"John","peter",11/15/99,"TIPPS","JAVA",52,NULL),
+    -> (563,"Andreson","Andy",08/15/94,"NITTS","C++",89,"Confidential");
+Query OK, 7 rows affected (0.23 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+mysql> SELECT*FROM PROGRAMMER;
++-------+----------+-----------+------------+--------+----------+--------+--------------+
+| EmpNo |LastName  | FirstName | HireDate   | ProjId | Language | TaskNo | Privilidge   |
++-------+----------+-----------+------------+--------+----------+--------+--------------+
+|   201 |Gupta     | Saurav    | 0000-00-00 | NPR    | VB       |   52   | Secret       |
+|   390 | Gosh     | pinky     | 0000-00-00 | KWC    | JAVA     |   11   | Top Secret   |
+|   789 | Agarwal  | Praveen   | 0000-00-00 | RNC    | VB       |   11   | Secret       |
+|   134 | Chaudary | Supriyo   | 0000-00-00 | TIPPS  | C++      |   52   | Secret       |
+|   896 | Jha      | Ranjit    | 0000-00-00 | KWC    | JAVA     |   10   | Top Secret   |
+|   345 | John     | peter     | 0000-00-00 | TIPPS  | JAVA     |   52   | NULL         |
+|   563 | Andreson | Andy      | 0000-00-00 | NITTS  | C++      |   89   | Confidential |
++-------+----------+-----------+------------+--------+----------+--------+--------------+
+
+mysql> CREATE database samplee;
+Query OK, 1 row affected (0.20 sec)
+
+mysql> USE samplee;
+Database changed
+mysql> CREATE TABLE WEATHER
+    -> (City varchar(20),
+    -> State varchar(20),
+    -> High numeric(3),
+    -> Low numeric(2)
+    -> );
+Query OK, 0 rows affected (1.91 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| handson            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sample  
+  samplee           |
+| sys                
++--------------------+
+9 rows in set (0.19 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_samplee |
++-------------------+
+| WEATHER           |
++-------------------+
+1 row in set (0.15 sec)
+
+mysql> DESCRIBE WEATHER;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| City  | varchar(20)  | YES  |     | NULL    |       |
+| State | varchar(20)  | YES  |     | NULL    |       |
+| High  | decimal(3,0) | YES  |     | NULL    |       |
+| Low   | decimal(2,0) | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+4 rows in set (0.12 sec)
+
+mysql> INSERT INTO WEATHER(City,State,High,Low)VALUES
+    -> ("Calcutta","West Bengal",105,90),
+    -> ("Trivandrum","Kerala",101,92),
+    -> ("Mumbai","Maharastra",88,96),
+    -> ("Bangalore","Karnataka",77,60),
+    -> ("New Delhi",NULL,80,72)
+    -> ;
+Query OK, 5 rows affected (0.19 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> SELECT*FROM WEATHER;
++------------+-------------+------+------+
+| City       | State       | High | Low  |
++------------+-------------+------+------+
+| Calcutta   | West Bengal |  105 |   90 |
+| Trivandrum | Kerala      |  101 |   92 |
+| Mumbai     | Maharastra  |   88 |   96 |
+| Bangalore  | Karnataka   |   77 |   60 |
+| New Delhi  | NULL        |   80 |   72 |
++------------+-------------+------+------
+
+
+
+E)
+
+i. Update PROGRAMMER set ProjId='NITTS,Language='C++' where FirstName='Saurav' and LastName='Gupta';
+
+i.Update BOOKS set ShelfNO='S10' where Title='DBMS';
+
+ii.delete from PROGRAMMER where EmpNo=200;
+
+iii.ALTER TABLE WEATHER
+
+ADD NatureOfTheClimate("rainy","cloudy","sunny","snow")  varchar;
+
+iv.DROP TABLE WEATHER;
+
+ 
+G)
+
+v.Select * from CUSTOMER where CITY='Chennai';
+
+vi.select * from CUSTOMER where SUPPLIERID=2;
+
+vii.Select CUSTID,FNAME,LNAME from CUSTOMER where DATEFIRSTPURCHASED>'10-Jan-2005';
+
+viii.select * from Supplier where location='Coimbatore';
+
+ix.select * from Supplier where SNAME like 'G%';
+
+x.select * from CUSTOMER where LNAME not like '%e%';
+
+xi.select * from CUSTOMER where DATEFIRSTPURCHASED like'%2006' order by CUSTID desc;
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
